@@ -1,0 +1,97 @@
+ReactJS? => Library of JS
+
+Pre requisits
+NodeJS : JS Environment (LTS Version)
+VS Code : Code Editor
+JS Knowledge : Basic understanding
+
+document.getElementById().onClick = () => {};
+
+Browser => Vanilla JS
+
+ReactJS -> Babel (Compiler) -> Webpack (Bundler) -> Vanilla JS -> Browser
+
+Compiler -> Convert React into Vanilla (Basic JS)
+Bundler -> Merge multiple files into single file
+
+Boilerplate (Basic structured & Pre configured setup)
+
+CRA (Create React App) -> Meta/FB (Officially depcrecated)
+Vite : npx create-vite@latest project-name
+
+npm install / npm i => It install all required dependencies (frameworks/libraries) in our project
+npm run dev -> Start the project on local system (Development Mode)
+
+React -> 1 HTML File (Single Page Application)
+DOM (Document Object Model) -> Representation of HTML tree
+JSX (JavaScript & XML)
+
+react ->  react-dom -> chalk -> loadash -> .... etc
+
+npm (Node Package Manager) -> JS
+composer -> php
+pip -> python
+
+
+UI Rendering
+
+package.json -> start -> index.html -> main.jsx -> app.jsx (ReactJS Code)
+
+--------------------------------------------------------------------------------
+15/07/2025
+
+JSX (JavaScript & XML) => JS with HTML
+
+Func in JS -> Return various things but not HTML, Start the name with small letter and capital letter
+Func in React (Functional Components) -> Return HTML, Starts the name with Capital Letter
+
+JS
+    sum() -> JS function correct wat to call
+React
+    App() -> Wrong react call component
+    <App /> -> Correct react component call
+
+Temaplate literals -> `User name is ${userName}
+New line here`
+React -> User name is {userName}
+
+ES5 Fn
+function demo() {
+    // fn body
+    consle.log(this)
+    return <return-value>
+}
+
+ES6 Fn / Arrow fn
+const demo = () => {
+    //fn body
+    console.log(this)
+    return <return-value>
+}
+
+
+demo()
+
+function sum (a,b) {
+    reutrn a+b
+}
+
+const sum = (a,b) => {
+    return a+b
+}
+
+const sum = (a,b) => a+b // Explicitly returned
+
+HTML Tree Representation -> DOM
+2 types of DOM
+
+Real DOM -> HTML Tree you see on browser
+Virtual Dom -> Copy of real DOM -> Can't be seen on browser (Internal to React library)
+Diffing Algo -> Way to identify which node to change
+
+key -> React internally identifies each element/HTML node with a unique ID
+
+Imp concepts
+1. Looping over array inside HTML
+2. Using objects inside HTML
+3. Importance of keys in dynamic/looped elements
