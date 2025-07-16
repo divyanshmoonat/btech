@@ -95,3 +95,27 @@ Imp concepts
 1. Looping over array inside HTML
 2. Using objects inside HTML
 3. Importance of keys in dynamic/looped elements
+
+--------------------------------------------------------------------------------
+16/07/2025
+
+Blogging Web App
+
+Header -> Static
+Content -> List of blogs, Detail of blog etc -> Dynamic
+Footer -> Static
+
+Websites's Repeated / Common part -> Components (Header, Footer, Card, Article etc)
+Independent pages -> Pages (/about-us, /login, /contact-us etc)
+
+Manage different pages on the screen -> Routing (react-router-dom)
+
+Types of tags in HTML
+Container Tag => <p></p>, <div></div>
+Empty Tag => <br> </br> <img> </img> <input />
+
+function BlogCard(title, image, body){
+    console.log(title)
+    console.log(image)
+    console.log(body)
+}
