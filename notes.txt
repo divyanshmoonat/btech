@@ -119,3 +119,59 @@ function BlogCard(title, image, body){
     console.log(image)
     console.log(body)
 }
+
+--------------------------------------------------------------------------------
+17/07/2025
+
+Spread Operator => 
+const obj1 = {
+    image: "a",
+    title: "b",
+    boyd: "c"
+}
+const obj2 = obj1; // copy by reference
+const obj2 = {...obj1} // copy by value
+
+const user = {
+    name: "John",
+    age: 10
+}
+
+const user2 = {
+    name: "John",
+    age: 10,
+    mobNo: "12345"
+}
+
+const arr = ["A","B"]
+
+Object & Array Destructuring
+
+const user = {
+    name: "John",
+    age: 10
+}
+const age = user.age;
+const { age } = user; // Object destrucuring
+const { name, age } = user;
+const { name: userName } = user; // userName variable contains the value of name property of user object
+
+const arr = ["A","B"];
+const first = arr[0];
+const second = arr[1];
+
+const [first,second] = arr; // Array Destructuring
+
+Conditional Rendering
+if(condition) {
+    // true statement
+} else {
+    // false statement
+}
+
+(condition) ? true statement : false statement
+
+?. (Optional Chaining) => If the value before ?. is available/truthy, then execute the part after ?.
+
+Functional Coponents => v16 or more
+Class based Components => v16 or less

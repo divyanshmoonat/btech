@@ -1,5 +1,8 @@
 const BlogCard = (props) => {
-  // console.log(props);
+//   console.log(props);
+  if (!props.title) {
+    return <h4>The article is not available due to a technical issue</h4>;
+  }
   return (
     <div
       style={{
@@ -18,6 +21,13 @@ const BlogCard = (props) => {
       <div>
         <h2>{props.title}</h2>
         <p>{props.body}</p>
+        Author :{" "}
+        <b>
+          {props.author ? props.author.name : "NA"}
+          {/* {
+                props.author?.name
+            } */}
+        </b>
       </div>
     </div>
   );
