@@ -1,3 +1,4 @@
+import { useState } from "react";
 import BlogCard from "../../components/BlogCard/BlogCard";
 
 const articles = [
@@ -11,7 +12,7 @@ const articles = [
     },
     createdTime: "",
     isPublished: true,
-    isDeleted: false
+    isDeleted: false,
   },
   {
     image:
@@ -28,15 +29,49 @@ const Home = () => {
    * 1. Create an array of objects/JSON for articles [{image: "", title: "", body: ""},...]
    * 2. Render a list of blogs using blogcard
    */
+  // let viewType = "LIST"; // Normal / Vanilla JS Variable
+  // const [ variable-name, setter-function ] = useState(init-value)
+  // setter-function(new-value)
+
+  // const [ userName, setUserName ] = useState("John");
+
+  // const [ age, setAge ] = useState(0);
+
+  const [viewType, setViewType] = useState("LIST");
+
+  const onViewBtnClick = () => {
+    // viewType = (viewType === "LIST") ? "TILE" : "LIST"; // Vanilla JS Variable assignment
+    const newViewType = viewType === "LIST" ? "TILE" : "LIST";
+
+    setViewType(newViewType);
+
+    console.log("View btn clicked", viewType);
+  };
+
   return (
     <div>
       {/* Todo : Write the content of Home page */}
       <h2>Home Page</h2>
-      {articles
-        // .map((article) => <BlogCard image={article.image} title={article.title} body={article.body} />)
-        .map((article, index) => (
-          <BlogCard key={`${article.title}_${index}`} {...article} />
-        ))}
+      <button onClick={onViewBtnClick}>
+        {viewType === "LIST" ? "Tile" : "List"} View
+      </button>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          flexDirection: viewType === "LIST" ? "column" : "row",
+        }}
+      >
+        {articles
+          // .map((article) => <BlogCard image={article.image} title={article.title} body={article.body} />)
+          .map((article, index) => (
+            <BlogCard
+              key={`${article.title}_${index}`}
+              {...article}
+              viewType={viewType}
+            />
+          ))}
+      </div>
     </div>
   );
 };

@@ -175,3 +175,25 @@ if(condition) {
 
 Functional Coponents => v16 or more
 Class based Components => v16 or less
+
+--------------------------------------------------------------------------------
+18/07/2025
+
+useState() => Hook
+Class based components vs functional component
+
+document.getElementById("button").onclick = () => {
+
+}
+
+document.getElementById("button").addEventListener("click", () => {})
+
+Re-render => Re showing the updated UI on the screen (Change in useState variable etc)
+
+Types of functions in react
+
+Functional components
+Normal functions
+Hooks
+
+Class based component -> Lifecycle (Method)
