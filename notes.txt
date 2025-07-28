@@ -197,3 +197,14 @@ Normal functions
 Hooks
 
 Class based component -> Lifecycle (Method)
+
+--------------------------------------------------------------------------------
+28/07/2025
+
+Reactjs lifecycle (https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
+    Phases
+        Methods
+
+Forms
+    1. Controlled components : The input components whose values are controlled by reactjs (eg using state variables)
+    2. Uncontrolled components : The input components whose values are controlled by DOM 
