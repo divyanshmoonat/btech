@@ -1,21 +1,40 @@
 import { useRef } from "react";
 
 const EnquiryUncontrolled = () => {
+
+  const nameRef = useRef();
+  const mobNoRef = useRef();
+  const messageRef = useRef();
+
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+    // console.log(e);
+    // console.log(nameRef.current.value)
+    console.log(nameRef.current);
+    const enquiryData = {
+        name: nameRef.current.value,
+        mobNo: mobNoRef.current.value,
+        message: messageRef.current.value
+    };
+    // nameRef.current.style.backgroundColor = "blue";
+    console.log(enquiryData);
+  };
+
   return (
     <div>
       <h3>Uncontrolled enquiry Form - refs</h3>
-      <form>
+      <form onSubmit={onFormSubmit}>
         <div>
           <label htmlFor="name">Name</label>
-          <input name="name" id="name" type="text" />
+          <input ref={nameRef} name="name" id="name" type="text" />
         </div>
         <div>
           <label htmlFor="mobNo">Mobile No</label>
-          <input name="mobNo" id="mobNo" type="text" />
+          <input ref={mobNoRef} name="mobNo" id="mobNo" type="text" />
         </div>
         <div>
           <label htmlFor="message">Message</label>
-          <textarea name="message" id="message" />
+          <textarea ref={messageRef} name="message" id="message" />
         </div>
         <input type="submit" />
       </form>
