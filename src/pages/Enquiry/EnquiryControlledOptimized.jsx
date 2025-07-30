@@ -5,39 +5,80 @@ const EnquiryControlledOptimized = () => {
     name: "",
     mobNo: "",
     message: "",
+    enquiryDept: "",
+    otherEnquiryDept: "",
   });
 
   const [nameError, setNameError] = useState(false);
 
   const onNameChange = (e) => {
-    console.log("on name field change", e.target.value);
+    // console.log("on name field change", e.target.value);
     // Max 12 chars are allowed
     if (e.target.value.length <= 12) {
-      console.log("Less than 12 chars in name");
+      // console.log("Less than 12 chars in name");
       // setName(e.target.value);
-      setEnquiryFormFields({ name: e.target.value });
+      setEnquiryFormFields({
+        ...enquiryFormFields,
+        name: e.target.value,
+      });
       setNameError(false);
     } else {
-      console.log("More than 12 chars in name");
+      // console.log("More than 12 chars in name");
       // Store error here
       setNameError(true);
     }
   };
 
-  const onMobNoChange = (e) => {
-    console.log("MobNo", e.target.value);
-    // setMobileNo(e.target.value);
-    setEnquiryFormFields({ mobNo: e.target.value });
-  };
-  const onMessageChange = (e) => {
-    console.log("Message", e.target.value);
-    // setMessage(e.target.value);
-    setEnquiryFormFields({ message: e.target.value });
+  const onInputChange = (e) => {
+    console.log(e.target.id);
+    const isValid = validateField(e.target.id, e.target.value);
+    // if (isValid) {
+    if (true) {
+      setEnquiryFormFields({
+        ...enquiryFormFields,
+        [e.target.id]: e.target.value,
+      });
+    }
   };
 
-  const onFormSubmit = e => {
+  const validateField = (fieldName, fieldValue) => {
+    //Todo: Write your validations here
+    if (fieldName === "name") {
+      // Validation for name
+    } else if (fieldName === "mobNo") {
+      // Validation for mob no
+    }
+  };
+
+  const onEnquiryDeptChange = (e) => {
+    // console.log("On enquiry dept change", e.target.value);
+    setEnquiryFormFields({
+      ...enquiryFormFields,
+      enquiryDept: e.target.value,
+    });
+  };
+
+  const onOtherDeptNameChange = (e) => {
+    setEnquiryFormFields({
+      ...enquiryFormFields,
+      otherEnquiryDept: e.target.value,
+    });
+  };
+
+  const onFormSubmit = (e) => {
     e.preventDefault();
     console.log(enquiryFormFields);
+    // Todo : Call the API to send the collected data
+    fetch("https://jsonplaceholder.typicode.com/post", {
+      method: "POST",
+      body: JSON.stringify(enquiryFormFields),
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log("ERROR OCCURED WHILE CALLING API", err);
+      });
   };
 
   return (
@@ -48,7 +89,7 @@ const EnquiryControlledOptimized = () => {
           <label htmlFor="name">Name</label>
           <input
             value={enquiryFormFields.name}
-            onChange={onNameChange}
+            onChange={onInputChange}
             name="name"
             id="name"
             type="text"
@@ -61,7 +102,7 @@ const EnquiryControlledOptimized = () => {
           <label htmlFor="mobNo">Mobile No</label>
           <input
             value={enquiryFormFields.mobNo}
-            onChange={onMobNoChange}
+            onChange={onInputChange}
             name="mobNo"
             id="mobNo"
             type="text"
@@ -71,11 +112,28 @@ const EnquiryControlledOptimized = () => {
           <label htmlFor="message">Message</label>
           <textarea
             value={enquiryFormFields.message}
-            onChange={onMessageChange}
+            onChange={onInputChange}
             name="message"
             id="message"
           />
         </div>
+        <div>
+          <label htmlFor="enquiryDept">Enquiry Department</label>
+          <select onChange={onEnquiryDeptChange} id="enquiryDept">
+            <option value="TECH">Technical</option>
+            <option value="SALES">Sales</option>
+            <option value="OTHERS">Other (Please specify)</option>
+          </select>
+        </div>
+        {enquiryFormFields.enquiryDept === "OTHERS" && (
+          <div>
+            <input
+              onChange={onOtherDeptNameChange}
+              type="text"
+              placeholder="Enter Dept name"
+            />
+          </div>
+        )}
         <input type="submit" />
       </form>
     </div>

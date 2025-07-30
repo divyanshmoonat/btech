@@ -214,3 +214,17 @@ Forms
 Controlled Forms
 
 input change -> updating the variable -> updating the input value
+
+--------------------------------------------------------------------------------
+30/07/2025
+
+API (Application Programming Interface)
+Pre requisits
+1. End Point / URL : https://jsonplaceholder.typicode.com/submit-enquiry , https://jsonplaceholder.typicode.com/post, https://jsonplaceholder.typicode.com/todo etc
+2. HTTP Method : GET/POST/PUT/PATCH/DELETE etc
+
+GET : To fetch the data from the server
+POST : To send the data to the server
+
+XHR (XML Http Request) => API Calling
+fetch() => Method to call API
