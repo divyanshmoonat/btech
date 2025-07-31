@@ -11,7 +11,7 @@ const App = () => {
 
   return (
     <div>
-      {/* <Home /> */}
+      <Home />
       {/* <ContactUs /> */}
       {/* <AboutUs email="contact-us@xyz.com" mobNo="9999999999" /> */}
       {/* <Enquiry />

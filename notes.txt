@@ -228,3 +228,9 @@ POST : To send the data to the server
 
 XHR (XML Http Request) => API Calling
 fetch() => Method to call API
+
+--------------------------------------------------------------------------------
+31/07/2025
+API / HTTP Request -> 
+1. Header -> Meta data of the request (extra info about the http req/res)
+2. Body -> Actual data

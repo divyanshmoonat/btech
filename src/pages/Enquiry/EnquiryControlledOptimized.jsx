@@ -1,13 +1,16 @@
 import { useState } from "react";
 
+import axios from "axios";
+
 const EnquiryControlledOptimized = () => {
-  const [enquiryFormFields, setEnquiryFormFields] = useState({
+  const initFormFields = {
     name: "",
     mobNo: "",
     message: "",
     enquiryDept: "",
     otherEnquiryDept: "",
-  });
+  };
+  const [enquiryFormFields, setEnquiryFormFields] = useState(initFormFields);
 
   const [nameError, setNameError] = useState(false);
 
@@ -65,20 +68,66 @@ const EnquiryControlledOptimized = () => {
     });
   };
 
-  const onFormSubmit = (e) => {
+  const onFormSubmit = async (e) => {
     e.preventDefault();
     console.log(enquiryFormFields);
     // Todo : Call the API to send the collected data
-    fetch("https://jsonplaceholder.typicode.com/post", {
-      method: "POST",
-      body: JSON.stringify(enquiryFormFields),
-    })
+
+    const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
+    console.log(res.data);
+    
+
+    // try {
+    //   const res = await axios.post(
+    //     "https://jsonplaceholder.typicode.com/posts",
+    //     enquiryFormFields,
+    //     {
+    //       headers: {
+    //         Client_id: "ABCD12345",
+    //       },
+    //     }
+    //   );
+    //   console.log(res.data);
+    //   alert(
+    //     "Enquiry submitted successfully, our team will reach out to you soon."
+    //   );
+    //   setEnquiryFormFields(initFormFields);
+    // } catch (err) {
+    //   console.log("Error calling API", err);
+    // }
+
+    axios
+      .post("https://jsonplaceholder.typicode.com/posts", enquiryFormFields)
       .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log("ERROR OCCURED WHILE CALLING API", err);
-      });
+        alert(
+          "Enquiry submitted successfully, our team will reach out to you soon."
+        );
+        setEnquiryFormFields(initFormFields);
+      }) // Response body
+      .catch((err) => console.log("Error calling API", err));
+
+    // fetch("https://jsonplaceholder.typicode.com/posts", {
+    //   method: "POST",
+    //   body: JSON.stringify(enquiryFormFields), // Req body
+    //   headers: {
+    //     // Req headers
+    //     CLIENT_ID: "ABCD1234",
+    //   },
+    // })
+    //   .then((res) => {
+    //     // console.log(res);
+    //     return res.json();
+    //   })
+    //   .then((data) => {
+    //     console.log(data); // API is giving success response
+    //     alert(
+    //       "Enquiry submitted successfully, our team will reach out to you soon."
+    //     );
+    //     setEnquiryFormFields(initFormFields);
+    //   })
+    //   .catch((err) => {
+    //     console.log("ERROR OCCURED WHILE CALLING API", err);
+    //   });
   };
 
   return (
