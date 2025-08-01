@@ -234,3 +234,14 @@ fetch() => Method to call API
 API / HTTP Request -> 
 1. Header -> Meta data of the request (extra info about the http req/res)
 2. Body -> Actual data
+
+--------------------------------------------------------------------------------
+01/07/2025
+useEffect() -> Hook used to manage side effects
+
+Routing
+
+/ => Root / Home <Home />
+/about-us => <AboutUs />
+/contact-us => <ContactUs />
+/enquiry => <EnquiryControlledOptimized />/

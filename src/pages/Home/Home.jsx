@@ -1,28 +1,7 @@
-import { useState } from "react";
-import BlogCard from "../../components/BlogCard/BlogCard";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-const articles = [
-  {
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Taj_Mahal_%28Edited%29.jpeg/500px-Taj_Mahal_%28Edited%29.jpeg",
-    title: "Taj Mahal - 8th wonder of the World",
-    body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, iste. Commodi reprehenderit eveniet possimus sapiente dicta ratione libero, quas ab praesentium ut dolore voluptatem voluptatibus minus alias, eius aspernatur veniam",
-    author: {
-      name: "John",
-    },
-    createdTime: "",
-    isPublished: true,
-    isDeleted: false,
-  },
-  {
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/React_Logo_SVG.svg/330px-React_Logo_SVG.svg.png",
-    title: "ReactJS - A Frontend JavaScript Library",
-    body: "ReactJS - Library for Frontend development, Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, iste. Commodi reprehenderit eveniet possimus sapiente dicta ratione libero, quas ab praesentium ut dolore voluptatem voluptatibus minus alias, eius aspernatur veniam",
-    createdTime: "",
-    isPublished: true,
-  },
-];
+import BlogCard from "../../components/BlogCard/BlogCard";
 
 const Home = () => {
   /**
@@ -38,6 +17,7 @@ const Home = () => {
   // const [ age, setAge ] = useState(0);
 
   const [viewType, setViewType] = useState("LIST");
+  const [articles, setArticles] = useState([]);
 
   const onViewBtnClick = () => {
     // viewType = (viewType === "LIST") ? "TILE" : "LIST"; // Vanilla JS Variable assignment
@@ -47,6 +27,44 @@ const Home = () => {
 
     console.log("View btn clicked", viewType);
   };
+
+  const fetchArticles = async () => {
+    try {
+      const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
+      console.log(res.data);
+      setArticles(res.data);
+    } catch (err) {
+      console.log("ERROR CALLING ARTICLES LIST API", err);
+    }
+  };
+
+  /**
+   * Syntax : useEffect
+   * useEffect(callback-fn, dep-array);
+   * callback-fn -> code to be executed on certain events/conditions
+   * dep-array -> The factor which triggers the callback fn
+   */
+
+  useEffect(() => {
+    console.log("Inside use effect with empty deps");
+    // const intervalId = setInterval(() => {
+    //   // Todo : Write code you want to execute after every 5 hrs
+    // }, 5 * 60 * 60 *1000);
+    fetchArticles();
+    // return () => {
+    //   // Unmounting phase (componentWillUnmount)
+    //   clearInterval(interval-id);
+    // }
+  }, []); // Mounting phase (componentDidMount)
+
+  // useEffect(() => {}); // No deps -> Updating phase (componentDidUpdate)
+
+  // useEffect(() => {
+  //   console.log("Use effect of view type variable");
+  //   // Todo: Write your analytics call here
+  // }, [viewType, articles]); // Updating phase
+
+  // fetchArticles();
 
   return (
     <div>

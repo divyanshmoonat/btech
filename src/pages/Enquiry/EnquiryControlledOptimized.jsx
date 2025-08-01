@@ -73,28 +73,28 @@ const EnquiryControlledOptimized = () => {
     console.log(enquiryFormFields);
     // Todo : Call the API to send the collected data
 
-    const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
-    console.log(res.data);
+    // const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
+    // console.log(res.data);
     
 
-    // try {
-    //   const res = await axios.post(
-    //     "https://jsonplaceholder.typicode.com/posts",
-    //     enquiryFormFields,
-    //     {
-    //       headers: {
-    //         Client_id: "ABCD12345",
-    //       },
-    //     }
-    //   );
-    //   console.log(res.data);
-    //   alert(
-    //     "Enquiry submitted successfully, our team will reach out to you soon."
-    //   );
-    //   setEnquiryFormFields(initFormFields);
-    // } catch (err) {
-    //   console.log("Error calling API", err);
-    // }
+    try {
+      const res = await axios.post(
+        "https://jsonplaceholder.typicode.com/posts",
+        enquiryFormFields,
+        {
+          headers: {
+            Client_id: "ABCD12345",
+          },
+        }
+      );
+      console.log(res.data);
+      alert(
+        "Enquiry submitted successfully, our team will reach out to you soon."
+      );
+      setEnquiryFormFields(initFormFields);
+    } catch (err) {
+      console.log("Error calling API", err);
+    }
 
     axios
       .post("https://jsonplaceholder.typicode.com/posts", enquiryFormFields)

@@ -1,5 +1,5 @@
 const BlogCard = (props) => {
-  console.log(props);
+  // console.log(props);
   if (!props.title) {
     return <h4>The article is not available due to a technical issue</h4>;
   }
@@ -39,12 +39,15 @@ const BlogCard = (props) => {
         margin: "10px",
       }}
     >
-      <img
-        style={{
-          maxWidth: "100px",
-        }}
-        src={props.image}
-      />
+      {props.image && (
+        <img
+          style={{
+            maxWidth: "100px",
+          }}
+          src={props.image}
+        />
+      )}
+
       <div>
         <h2>{props.title}</h2>
         <p>{props.body}</p>

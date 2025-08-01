@@ -33,11 +33,11 @@ class AboutUs extends React.Component {
   // }
 
   render() {
-    console.log("Render");
-    console.log(this.props);
+    // console.log("Render");
+    // console.log(this.props);
     return (
       <div>
-        <h1>Class based component</h1>
+        <h2>About Us Screen - Class based component</h2>
         View Type {this.state.viewType}
         <button
           onClick={() => {
