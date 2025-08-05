@@ -236,7 +236,7 @@ API / HTTP Request ->
 2. Body -> Actual data
 
 --------------------------------------------------------------------------------
-01/07/2025
+01/08/2025
 useEffect() -> Hook used to manage side effects
 
 Routing
@@ -244,4 +244,20 @@ Routing
 / => Root / Home <Home />
 /about-us => <AboutUs />
 /contact-us => <ContactUs />
-/enquiry => <EnquiryControlledOptimized />/
+/enquiry => <EnquiryControlledOptimized />
+
+--------------------------------------------------------------------------------
+05/08/2025
+
+https://www.amazon.in/JBL-Wireless-Headphones-Bluetooth-Assistant/dp
+https://www.amazon.in/HP-99Y16AA-H200-Wireless-Headset/dp
+https://www.amazon.in/boAt-Rockerz-Technology-Integrated-Headphones/dp
+
+base-url/<PRODUCT_NAME>/dp
+
+http://localhost:5173/article-details/1
+http://localhost:5173/article-details/2
+http://localhost:5173/article-details/3
+....
+
+base-url/article-details/<ARTICLE_ID>
