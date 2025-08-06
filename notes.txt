@@ -261,3 +261,21 @@ http://localhost:5173/article-details/3
 ....
 
 base-url/article-details/<ARTICLE_ID>
+
+--------------------------------------------------------------------------------
+06/08/2025
+/ => Home
+/articles => Articles List
+/articles/<ARTICLE_ID> OR <ARTICLE_TITLE> => Article Details
+/articles/<ARTICLE_ID>/<NEWPARAM>
+
+Home -> Articles List -> Articles Details
+
+
+Home / Articles List / Article Details
+
+/ ---> Home
+
+/articles ---> Home / Articles List
+
+/articles/<ARTICLE_ID> ---> Home / Articles List / Article Details

@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 
 import Header from "../Header/Header";
+import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 
 const Layout = () => {
   return (
@@ -10,6 +11,7 @@ const Layout = () => {
       {/* Footer */}
 
       <Header />
+      <Breadcrumbs />
       <Outlet />
     </>
   );
