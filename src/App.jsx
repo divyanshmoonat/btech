@@ -87,7 +87,7 @@ const router = createBrowserRouter([
 const App = () => {
   return (
     <div>
-      <Suspense>
+      <Suspense fallback={<FallbackLoader />}>
         <RouterProvider router={router} />
       </Suspense>
     </div>
