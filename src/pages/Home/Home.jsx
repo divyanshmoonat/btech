@@ -30,10 +30,15 @@ const Home = () => {
 
   // fetchArticles();
 
+  const onBtnClick = () => {
+    console.log("Btn clicked");
+  };
+
   return (
     <div>
       {/* Todo : Write the content of Home page */}
       <h2>Home Page</h2>
+      <button onClick={onBtnClick}>Click here</button>
     </div>
   );
 };

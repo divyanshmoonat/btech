@@ -5,6 +5,7 @@ const Header = () => {
     <div
       style={{
         display: "flex",
+        width: "100vw",
       }}
     >
       <ul
@@ -35,7 +36,9 @@ const Header = () => {
           <Link to={"/enquiry"}>Enquiry</Link>
         </li>
       </ul>
-      <ul></ul>
+      <ul>
+        <Link to={"/login"}>Login</Link>
+      </ul>
     </div>
   );
 };
