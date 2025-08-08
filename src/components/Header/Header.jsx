@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = (props) => {
+  console.log(props);
   return (
     <div
       style={{
@@ -34,6 +35,9 @@ const Header = () => {
         <li>
           {/* <a href="/enquiry">Enquiry</a> */}
           <Link to={"/enquiry"}>Enquiry</Link>
+          {/* <button onClick={() => {
+            props.updateLoginStatus(true)
+          }}>Login</button> */}
         </li>
       </ul>
       <ul>

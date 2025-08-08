@@ -1,7 +1,9 @@
 import { useState } from "react";
+import ReactDom from "react-dom";
 
 import axios from "axios";
 import Header from "../../components/Header/Header";
+import Modal from "../../components/Modal/Modal";
 
 const EnquiryControlledOptimized = () => {
   const initFormFields = {
@@ -14,6 +16,8 @@ const EnquiryControlledOptimized = () => {
   const [enquiryFormFields, setEnquiryFormFields] = useState(initFormFields);
 
   const [nameError, setNameError] = useState(false);
+
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const onNameChange = (e) => {
     // console.log("on name field change", e.target.value);
@@ -76,7 +80,6 @@ const EnquiryControlledOptimized = () => {
 
     // const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
     // console.log(res.data);
-    
 
     try {
       const res = await axios.post(
@@ -89,23 +92,25 @@ const EnquiryControlledOptimized = () => {
         }
       );
       console.log(res.data);
-      alert(
-        "Enquiry submitted successfully, our team will reach out to you soon."
-      );
+      setShowSuccessMessage(true);
+      // alert(
+      //   "Enquiry submitted successfully, our team will reach out to you soon."
+      // );
+      // Todo: Show a modal with success message
       setEnquiryFormFields(initFormFields);
     } catch (err) {
       console.log("Error calling API", err);
     }
 
-    axios
-      .post("https://jsonplaceholder.typicode.com/posts", enquiryFormFields)
-      .then((res) => {
-        alert(
-          "Enquiry submitted successfully, our team will reach out to you soon."
-        );
-        setEnquiryFormFields(initFormFields);
-      }) // Response body
-      .catch((err) => console.log("Error calling API", err));
+    // axios
+    //   .post("https://jsonplaceholder.typicode.com/posts", enquiryFormFields)
+    //   .then((res) => {
+    //     alert(
+    //       "Enquiry submitted successfully, our team will reach out to you soon."
+    //     );
+    //     setEnquiryFormFields(initFormFields);
+    //   }) // Response body
+    //   .catch((err) => console.log("Error calling API", err));
 
     // fetch("https://jsonplaceholder.typicode.com/posts", {
     //   method: "POST",
@@ -129,6 +134,10 @@ const EnquiryControlledOptimized = () => {
     //   .catch((err) => {
     //     console.log("ERROR OCCURED WHILE CALLING API", err);
     //   });
+  };
+
+  const onModalClose = () => {
+    setShowSuccessMessage(false);
   };
 
   return (
@@ -186,6 +195,15 @@ const EnquiryControlledOptimized = () => {
         )}
         <input type="submit" />
       </form>
+
+      {showSuccessMessage && (
+        <Modal onClose={onModalClose}>
+          <p>
+            Your enquiry has been submitted successfully, someone from our team
+            will get in touch with you shortly
+          </p>
+        </Modal>
+      )}
     </div>
   );
 };

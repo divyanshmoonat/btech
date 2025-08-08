@@ -279,3 +279,12 @@ Home / Articles List / Article Details
 /articles ---> Home / Articles List
 
 /articles/<ARTICLE_ID> ---> Home / Articles List / Article Details
+
+--------------------------------------------------------------------------------
+08/08/2025
+
+Lifting up the state
+    Article List
+        BlogCard
+
+React Portals
