@@ -1,7 +1,12 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 
+import { AppCtx } from "../../App";
+
 const Header = (props) => {
-  console.log(props);
+  // console.log(props);
+  const ctx = useContext(AppCtx);
+  // console.log(ctx);
   return (
     <div
       style={{
@@ -43,6 +48,9 @@ const Header = (props) => {
       <ul>
         <Link to={"/login"}>Login</Link>
       </ul>
+      <li>
+        {ctx.userDetails?.name}
+      </li>
     </div>
   );
 };

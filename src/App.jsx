@@ -1,5 +1,5 @@
 import "./App.css";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, createContext, useState } from "react";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -84,12 +84,23 @@ const router = createBrowserRouter([
   },
 ]);
 
+export const AppCtx = createContext();
+
 const App = () => {
+  const [state, setState] = useState({
+    articlesList: [],
+    userDetails: {
+      name: "John",
+      email: "john@example.com",
+    },
+  }); // Application's common state , NOT THE APP COMPONENT'S LOCAL STATE
   return (
     <div>
-      <Suspense fallback={<FallbackLoader />}>
-        <RouterProvider router={router} />
-      </Suspense>
+      <AppCtx.Provider value={{ state, setState }}>
+        <Suspense fallback={<FallbackLoader />}>
+          <RouterProvider router={router} />
+        </Suspense>
+      </AppCtx.Provider>
     </div>
   );
 };

@@ -288,3 +288,33 @@ Lifting up the state
         BlogCard
 
 React Portals
+
+--------------------------------------------------------------------------------
+11/08/2025
+
+App
+    Layout
+        Header
+            Nav bar
+                Links
+        Content
+            Article List
+                Blog Card
+                    Headings
+                    Buttons
+                    Links
+            User Profile
+                Settings
+                    Data privacy
+                        Cards
+                            Heading
+                    Ad settings
+                Profile info
+        Footer
+            List
+                Links
+
+Context API
+    Provider => Provides the access of common state to whole application
+    Consumer => Component which consumes/use the data from the state
+    

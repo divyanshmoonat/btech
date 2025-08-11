@@ -1,11 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 
 import BlogCard from "../../components/BlogCard/BlogCard";
+import { AppCtx } from "../../App";
 
 const ArticlesList = () => {
+  const ctx = useContext(AppCtx);
+  console.log(ctx);
+
   const [viewType, setViewType] = useState("LIST");
-  const [articles, setArticles] = useState([]);
 
   const onViewBtnClick = () => {
     // viewType = (viewType === "LIST") ? "TILE" : "LIST"; // Vanilla JS Variable assignment
@@ -13,21 +16,23 @@ const ArticlesList = () => {
 
     setViewType(newViewType);
 
-    console.log("View btn clicked", viewType);
+    // console.log("View btn clicked", viewType);
   };
 
   const fetchArticles = async () => {
     try {
       const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
-    //   console.log(res.data);
-      setArticles(res.data);
+      ctx.setState({
+        ...ctx.state,
+        articlesList: res.data
+      }); // Updated data in App context
     } catch (err) {
       console.log("ERROR CALLING ARTICLES LIST API", err);
     }
   };
 
   useEffect(() => {
-    console.log("Inside use effect with empty deps");
+    // console.log("Inside use effect with empty deps");
     // const intervalId = setInterval(() => {
     //   // Todo : Write code you want to execute after every 5 hrs
     // }, 5 * 60 * 60 *1000);
@@ -50,7 +55,7 @@ const ArticlesList = () => {
           flexDirection: viewType === "LIST" ? "column" : "row",
         }}
       >
-        {articles
+        {ctx.state.articlesList
           // .map((article) => <BlogCard image={article.image} title={article.title} body={article.body} />)
           .map((article, index) => (
             <BlogCard
