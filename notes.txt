@@ -318,3 +318,12 @@ Context API
     Provider => Provides the access of common state to whole application
     Consumer => Component which consumes/use the data from the state
     
+--------------------------------------------------------------------------------
+12/08/2025
+
+Ways to implement CSS
+1. Inline => Written directly with html tag with style attribute
+2. Internal => Written in the html style tag
+3. External => Written in the seperate css file
+
+Modular css

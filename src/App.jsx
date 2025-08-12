@@ -1,5 +1,5 @@
 import "./App.css";
-import { lazy, Suspense, createContext, useState } from "react";
+import { lazy, Suspense } from "react";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -14,6 +14,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import Dashboard from "./pages/Dashboard/Dashboard";
 // import ErrorScreen from "./components/ErrorScreen/ErrorScreen";
 import FallbackLoader from "./components/FallbackLoader/FallbackLoader";
+import AppContextProvider from "./context/AppContext";
 
 const Home = lazy(() => import("./pages/Home/Home"));
 const ContactUs = lazy(() => import("./pages/ContactUs/ContactUs"));
@@ -84,23 +85,14 @@ const router = createBrowserRouter([
   },
 ]);
 
-export const AppCtx = createContext();
-
 const App = () => {
-  const [state, setState] = useState({
-    articlesList: [],
-    userDetails: {
-      name: "John",
-      email: "john@example.com",
-    },
-  }); // Application's common state , NOT THE APP COMPONENT'S LOCAL STATE
   return (
     <div>
-      <AppCtx.Provider value={{ state, setState }}>
+      <AppContextProvider>
         <Suspense fallback={<FallbackLoader />}>
           <RouterProvider router={router} />
         </Suspense>
-      </AppCtx.Provider>
+      </AppContextProvider>
     </div>
   );
 };

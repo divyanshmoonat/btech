@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+import "./BlogCard.css";
+
 const BlogCard = (props) => {
   // console.log(props);
   if (!props.title) {
@@ -52,9 +54,9 @@ const BlogCard = (props) => {
 
       <div>
         <Link to={`/articles/${props.id}`}>
-          <h2>{props.title}</h2>
+          <h2 className="heading">{props.title}</h2>
         </Link>
-        <p>{props.body}</p>
+        <p className="padding-txt">{props.body}</p>
         Author :{" "}
         <b>
           {props.author ? props.author.name : "NA"}

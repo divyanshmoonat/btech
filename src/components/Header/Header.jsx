@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 
-import { AppCtx } from "../../App";
+import { AppContext } from "../../context/AppContext";
 
 const Header = (props) => {
   // console.log(props);
-  const ctx = useContext(AppCtx);
+  const ctx = useContext(AppContext);
   // console.log(ctx);
   return (
     <div
@@ -45,12 +45,20 @@ const Header = (props) => {
           }}>Login</button> */}
         </li>
       </ul>
-      <ul>
-        <Link to={"/login"}>Login</Link>
+      <ul
+        style={{
+          listStyle: "none",
+          display: "flex",
+          gap: "2rem",
+        }}
+      >
+        <li>
+          <Link to={"/login"}>Login</Link>
+        </li>
+        {ctx.state.isLoggedIn && (
+          <li style={{ fontWeight: "bold" }}>{ctx.state.userDetails?.name}</li>
+        )}
       </ul>
-      <li>
-        {ctx.userDetails?.name}
-      </li>
     </div>
   );
 };

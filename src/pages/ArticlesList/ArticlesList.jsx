@@ -2,11 +2,11 @@ import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 
 import BlogCard from "../../components/BlogCard/BlogCard";
-import { AppCtx } from "../../App";
+import { AppContext } from "../../context/AppContext";
 
 const ArticlesList = () => {
-  const ctx = useContext(AppCtx);
-  console.log(ctx);
+  const ctx = useContext(AppContext);
+  // console.log(ctx);
 
   const [viewType, setViewType] = useState("LIST");
 
@@ -24,7 +24,7 @@ const ArticlesList = () => {
       const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
       ctx.setState({
         ...ctx.state,
-        articlesList: res.data
+        articlesList: res.data,
       }); // Updated data in App context
     } catch (err) {
       console.log("ERROR CALLING ARTICLES LIST API", err);
@@ -36,7 +36,9 @@ const ArticlesList = () => {
     // const intervalId = setInterval(() => {
     //   // Todo : Write code you want to execute after every 5 hrs
     // }, 5 * 60 * 60 *1000);
-    fetchArticles();
+    if (ctx.state.articlesList.length === 0) {
+      fetchArticles();
+    }
     // return () => {
     //   // Unmounting phase (componentWillUnmount)
     //   clearInterval(interval-id);

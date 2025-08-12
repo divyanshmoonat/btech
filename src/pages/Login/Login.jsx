@@ -1,8 +1,12 @@
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+
+import { AppContext } from "../../context/AppContext";
 
 const Login = () => {
   const navigate = useNavigate();
-
+  const ctx = useContext(AppContext);
+  // console.log(ctx);
   const onLogin = (e) => {
     e.preventDefault();
     const userName = e.target.username.value;
@@ -10,6 +14,10 @@ const Login = () => {
     console.log(userName, password);
     // Call an API to Login
     if (userName === "divyansh" && password === "12345") {
+      ctx.setState({
+        ...ctx.state,
+        isLoggedIn: true
+      });
       // Redirect the user to dashboard
       navigate("/dashboard");
     } else {
