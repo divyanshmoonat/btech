@@ -327,3 +327,46 @@ Ways to implement CSS
 3. External => Written in the seperate css file
 
 Modular css
+
+--------------------------------------------------------------------------------
+13/08/2025
+App.css & index.css => Global styling
+
+Redux vs context API
+
+3rs Party solution vs React's native solution
+Very robust vs less robust
+Setup requires more efforts vs setup requires less efforts
+Single source of truth vs Multiple source of truth
+Uses Middlewares vs Does not use middlewares
+
+
+Context API => State -> Provider, Consumer -> useContext()
+Redux -> Store/State -> Reducer -> Action
+
+Store/State => Common storage area for the app's data (ONLY 1 STORE IS ALLOWED)
+Reducer => Contains business logic on how to update the data in the store
+Actions => Plain objects which defines which type of operation to be performed with the data/payload
+{
+    type: "LOGIN_SUCCESS",
+    payload: {
+        userName: "John",
+        email: "john@email.com"
+    }
+}
+
+{
+    type: "PLACE_ORDER",
+    payload: {
+        productId: 123,
+        qty: 2,
+        paymentMehod: "ONLINE"
+    }
+}
+
+eComm ->
+    User
+    Product
+    Checkout
+    Cart
+    Order

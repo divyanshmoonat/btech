@@ -1,0 +1,26 @@
+.heading {
+  font-size: 30px;
+  color: red;
+}
+
+.txt-bold {
+}
+
+.container-list {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid black;
+  margin: 10px;
+}
+
+.container-tile {
+  width: 300px;
+  border: 2px solid black;
+  height: 500px;
+  overflow: hidden;
+  margin: 10px;
+}
+
+image {
+  max-width: 100%;
+}

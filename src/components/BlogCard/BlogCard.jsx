@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import "./BlogCard.css";
+import styles from "./BlogCard.module.css";
 
 const BlogCard = (props) => {
   // console.log(props);
@@ -9,16 +9,8 @@ const BlogCard = (props) => {
   }
   if (props.viewType === "TILE") {
     return (
-      <div
-        style={{
-          width: "300px",
-          border: "2px solid black",
-          height: "500px",
-          overflow: "hidden",
-          margin: "10px",
-        }}
-      >
-        <img style={{ maxWidth: "100%" }} src={props.image} />
+      <div className={styles["container-tile"]}>
+        <img src={props.image} />
         <div>
           <h2>{props.title}</h2>
           <p>{props.body}</p>
@@ -35,26 +27,14 @@ const BlogCard = (props) => {
   }
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        border: "2px solid black",
-        margin: "10px",
-      }}
-    >
-      {props.image && (
-        <img
-          style={{
-            maxWidth: "100px",
-          }}
-          src={props.image}
-        />
-      )}
+    <div className={`${styles["container-list"]} txt-size ${props.viewType === "TILE" ? 'p-20' : 'p-10'}`}>
+      {props.image && <img src={props.image} />}
 
-      <div>
+      <div style={{
+        display: props.viewType === "LIST" ? "flex": "grid"
+      }}>
         <Link to={`/articles/${props.id}`}>
-          <h2 className="heading">{props.title}</h2>
+          <h2 className={styles.heading}>{props.title}</h2>
         </Link>
         <p className="padding-txt">{props.body}</p>
         Author :{" "}
