@@ -15,6 +15,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import ErrorScreen from "./components/ErrorScreen/ErrorScreen";
 import FallbackLoader from "./components/FallbackLoader/FallbackLoader";
 import AppContextProvider from "./context/AppContext";
+import Error from "./pages/Error/Error";
 
 const Home = lazy(() => import("./pages/Home/Home"));
 const ContactUs = lazy(() => import("./pages/ContactUs/ContactUs"));
@@ -71,17 +72,14 @@ export const routes = [
     path: "/enquiry",
     element: <EnquiryControlledOptimized />,
     name: "Enquiry Form",
-  },
-  {
-    path: "*", // Wildcard character
-    element: <ErrorScreen />,
-  },
+  }
 ];
 
 const router = createBrowserRouter([
   {
     element: <Layout />,
     children: routes,
+    errorElement: <Error />
   },
 ]);
 

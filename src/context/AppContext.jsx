@@ -8,8 +8,8 @@ const AppContextProvider = (props) => {
     articlesList: [],
     isLoggedIn: false,
     userDetails: {
-      name: "John",
-      email: "john@example.com",
+      name: "",
+      email: "",
     },
   }); // Application's common state , NOT THE APP COMPONENT'S LOCAL STATE
 

@@ -370,3 +370,40 @@ eComm ->
     Checkout
     Cart
     Order
+
+--------------------------------------------------------------------------------
+14/08/2025
+
+Working principles of Redux
+1. Single source of truth (ONLY 1 STATE/STORE)
+2. State is read only
+3. Updates are made using pure functions only
+
+state = {
+    user: {
+        address: {
+            addressLine1: ""
+        }
+    },
+    products: {},
+    cart: {}
+}
+
+state.user.name = "John" XXXXXX NOT ALLOWED
+state.user.address.addressLine1 = "NEW ADDRESS"
+
+updateFn(oldState, data) { // Reducers
+    // return new state
+    const newState = {
+        ...oldState,
+        user: {
+            ...oldState.user,
+            name: "John",
+            address: {
+                ...oldState.user.address,
+                addressLine1: ""
+            }
+        }
+    }
+    return newState;
+}
