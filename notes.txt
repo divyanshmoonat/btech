@@ -407,3 +407,10 @@ updateFn(oldState, data) { // Reducers
     }
     return newState;
 }
+
+--------------------------------------------------------------------------------
+19/08/2025
+
+Redux data flow
+
+Login button click -> Dispatch login() action -> reducer -> store -> header (reading redux data)

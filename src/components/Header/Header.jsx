@@ -1,12 +1,16 @@
-import { useContext } from "react";
+// import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-import { AppContext } from "../../context/AppContext";
+// import { AppContext } from "../../context/AppContext";
 
 const Header = (props) => {
   // console.log(props);
-  const ctx = useContext(AppContext);
+  // const ctx = useContext(AppContext);
   // console.log(ctx);
+  const data = useSelector((state) => state); // state -> Redux state/store
+  console.log(data);
+
   return (
     <div
       style={{
@@ -55,8 +59,8 @@ const Header = (props) => {
         <li>
           <Link to={"/login"}>Login</Link>
         </li>
-        {ctx.state.isLoggedIn && (
-          <li style={{ fontWeight: "bold" }}>{ctx.state.userDetails?.name}</li>
+        {data.user.isLoggedIn && (
+          <li style={{ fontWeight: "bold" }}>{data.user.userDetails.name}</li>
         )}
       </ul>
     </div>

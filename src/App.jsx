@@ -2,6 +2,9 @@ import "./App.css";
 import { lazy, Suspense } from "react";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Provider } from "react-redux";
+
+import store from "./redux/store";
 
 // import Home from "./pages/Home/Home";
 // import ContactUs from "./pages/ContactUs/ContactUs";
@@ -72,25 +75,25 @@ export const routes = [
     path: "/enquiry",
     element: <EnquiryControlledOptimized />,
     name: "Enquiry Form",
-  }
+  },
 ];
 
 const router = createBrowserRouter([
   {
     element: <Layout />,
     children: routes,
-    errorElement: <Error />
+    errorElement: <Error />,
   },
 ]);
 
 const App = () => {
   return (
     <div>
-      <AppContextProvider>
+      <Provider store={store}>
         <Suspense fallback={<FallbackLoader />}>
           <RouterProvider router={router} />
         </Suspense>
-      </AppContextProvider>
+      </Provider>
     </div>
   );
 };
